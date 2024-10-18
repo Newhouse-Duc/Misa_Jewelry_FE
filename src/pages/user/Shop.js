@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import { Tabs } from 'antd';
-import { Pagination } from 'antd';
+import { Pagination, Spin } from 'antd';
 import { useNavigate } from "react-router-dom";
 import {
     MDBContainer,
@@ -46,7 +46,10 @@ const Shop = (props) => {
         , [])
     useEffect(
         () => {
-            dispatch(getproduct())
+            setTimeout(() => {
+                dispatch(getproduct())
+            }, 3000);
+
         }, []
     )
     useEffect(() => {
@@ -190,88 +193,89 @@ const Shop = (props) => {
                     <Option value="2000000-">Trên 2,000,000 VND</Option>
                 </Select>
             </div>
-            <section>
-                <div className="container">
-                    <div className="row">
-                        {currentProducts.map((product) => (
-                            <div className="col-md-6 col-lg-3 ftco-animate" key={product.id} style={{ marginBottom: '20px' }}>
-                                <MDBCard
-                                    className="product-card"
-                                    style={{ position: 'relative', textAlign: 'center' }}
-                                    onMouseEnter={(e) => {
-                                        e.currentTarget.querySelector('.hover-buttons').style.opacity = 1;
-                                        e.currentTarget.querySelector('.content').style.filter = 'blur(5px)';
-                                    }}
-                                    onMouseLeave={(e) => {
-                                        e.currentTarget.querySelector('.hover-buttons').style.opacity = 0;
-                                        e.currentTarget.querySelector('.content').style.filter = 'none';
-                                    }}
-                                >
-                                    <MDBRipple rippleColor="light" rippleTag="div" className="bg-image rounded hover-zoom">
-                                        <MDBCardImage
-                                            src={product.img}
-                                            fluid
-                                            className="w-100"
-                                            style={{ height: '300px', objectFit: 'cover' }}
-                                        />
-                                        <a onClick={() => handleNavigate(`/detailprd/${product.id}`)}>
-                                            <div className="hover-overlay">
-                                                <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }} />
+            <Spin spinning={!currentProducts.length} tip="Đang tải ...">
+                <section>
+                    <div className="container">
+                        <div className="row">
+                            {currentProducts.map((product) => (
+                                <div className="col-md-6 col-lg-3 ftco-animate" key={product.id} style={{ marginBottom: '20px' }}>
+                                    <MDBCard
+                                        className="product-card"
+                                        style={{ position: 'relative', textAlign: 'center' }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.querySelector('.hover-buttons').style.opacity = 1;
+                                            e.currentTarget.querySelector('.content').style.filter = 'blur(5px)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.querySelector('.hover-buttons').style.opacity = 0;
+                                            e.currentTarget.querySelector('.content').style.filter = 'none';
+                                        }}
+                                    >
+                                        <MDBRipple rippleColor="light" rippleTag="div" className="bg-image rounded hover-zoom">
+                                            <MDBCardImage
+                                                src={product.img}
+                                                fluid
+                                                className="w-100"
+                                                style={{ height: '300px', objectFit: 'cover' }}
+                                            />
+                                            <a onClick={() => handleNavigate(`/detailprd/${product.id}`)}>
+                                                <div className="hover-overlay">
+                                                    <div className="mask" style={{ backgroundColor: 'rgba(251, 251, 251, 0.15)' }} />
+                                                </div>
+                                            </a>
+                                        </MDBRipple>
+                                        <MDBCardBody>
+                                            <div className="content" style={{ transition: 'filter 0.3s ease' }}>
+                                                <h5
+                                                    className="card-title mb-3 text-center text-reset"
+                                                    style={{
+                                                        whiteSpace: 'nowrap',
+                                                        overflow: 'hidden',
+                                                        textOverflow: 'ellipsis',
+                                                    }}
+                                                >
+                                                    {product.productName}
+                                                </h5>
+                                                <h6 className="mb-3 text-center">
+                                                    {product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
+                                                </h6>
                                             </div>
-                                        </a>
-                                    </MDBRipple>
-                                    <MDBCardBody>
-                                        <div className="content" style={{ transition: 'filter 0.3s ease' }}>
-                                            <h5
-                                                className="card-title mb-3 text-center text-reset"
+
+                                            <div
+                                                className="hover-buttons"
                                                 style={{
-                                                    whiteSpace: 'nowrap',
-                                                    overflow: 'hidden',
-                                                    textOverflow: 'ellipsis',
+                                                    display: 'flex',
+                                                    justifyContent: 'center',
+                                                    gap: '10px',
+                                                    marginTop: '15px',
+                                                    opacity: 0,
+                                                    transition: 'opacity 0.3s ease',
                                                 }}
                                             >
-                                                {product.productName}
-                                            </h5>
-                                            <h6 className="mb-3 text-center">
-                                                {product.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}
-                                            </h6>
-                                        </div>
+                                                <MDBBtn
+                                                    outline
+                                                    rounded
+                                                    color="dark"
+                                                    onClick={() => handleNavigate(`/detailprd/${product.id}`)}
+                                                >
+                                                    <i className="bi bi-eye"></i>
+                                                </MDBBtn>
 
-                                        <div
-                                            className="hover-buttons"
-                                            style={{
-                                                display: 'flex',
-                                                justifyContent: 'center',
-                                                gap: '10px',
-                                                marginTop: '15px',
-                                                opacity: 0,
-                                                transition: 'opacity 0.3s ease',
-                                            }}
-                                        >
-                                            <MDBBtn
-                                                outline
-                                                rounded
-                                                color="dark"
-                                                onClick={() => handleNavigate(`/detailprd/${product.id}`)}
-                                            >
-                                                <i className="bi bi-eye"></i>
-                                            </MDBBtn>
-
-                                            <MDBBtn outline rounded color="dark" onClick={() => handleAddcart(product)}>
-                                                <i className="bi bi-cart-plus"></i>
-                                            </MDBBtn>
-                                        </div>
-                                    </MDBCardBody>
-                                </MDBCard>
-                            </div>
-                        ))}
+                                                <MDBBtn outline rounded color="dark" onClick={() => handleAddcart(product)}>
+                                                    <i className="bi bi-cart-plus"></i>
+                                                </MDBBtn>
+                                            </div>
+                                        </MDBCardBody>
+                                    </MDBCard>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            </section>
-
+                </section>
+            </Spin>
 
             <div className="container" style={{ marginTop: '10px', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-                <hr style={{ width: '300px', margin: 'auto', borderTop: '2px solid #42210B' }} />
+
                 <br />
                 <Pagination
                     current={currentPage}

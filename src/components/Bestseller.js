@@ -7,8 +7,7 @@ const Bestseller = () => {
     const dispatch = useDispatch();
     const [slidesToShow, setSlidesToShow] = useState(4);
     const listproduct = useSelector((state) => state.product.listproduct);
-    const itemsToShow = 4;
-    const limitedProducts = listproduct.slice(0, 8);
+
 
 
     const navigate = useNavigate()

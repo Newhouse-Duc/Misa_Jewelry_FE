@@ -56,7 +56,7 @@ const Cart = (props) => {
                                 <h3 className="mb-4 billing-heading text-dark" style={{ fontWeight: '600', fontSize: '24px', textAlign: 'center' }}>Giỏ hàng</h3>
                                 <hr />
                                 <div className="table-responsive" style={{ overflowX: 'auto' }}>
-                                    <table className="table table-borderless text-center">
+                                    <table className="table table-borderless text-center" style={{ backgroundColor: '#f9f9f9' }}>
                                         <thead className="bg-light">
                                             <tr>
                                                 <th>&nbsp;</th>
