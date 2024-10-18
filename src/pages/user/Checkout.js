@@ -188,70 +188,71 @@ const Checkout = (props) => {
             <Header />
             <div className="container my-5">
                 <div className="row">
-                    <div className="col-md-7">
-                        <h2 className="mb-4">Checkout</h2>
-                        <h5 className="mb-3">Thông tin đặt hàng</h5>
+
+                    <div className="col-lg-7 col-md-12 mb-5">
+                        <h2 className="mb-4 text-uppercase fw-bold text-dark">Thông tin đặt hàng</h2>
                         <form>
                             <div className="row">
                                 <div className="col-md-6 mb-4">
-                                    <label htmlFor="nameOnCard" className="form-label">Tên người nhận:</label>
+                                    <label htmlFor="nameOnCard" className="form-label fw-bold text-muted">Tên người nhận:</label>
                                     <input
                                         type="text"
-                                        className="form-control form-control-lg"
+                                        className="form-control form-control-lg shadow-sm"
                                         id="nameOnCard"
                                         placeholder="Tên người nhận"
                                         value={valueoder.namerecive}
                                         onChange={(event) => handlesetinput('namerecive', event.target.value)}
-                                        style={{ borderRadius: '8px' }}
+                                        style={{ borderRadius: '10px' }}
                                     />
                                 </div>
                                 <div className="col-md-6 mb-4">
-                                    <label htmlFor="phoneNumber" className="form-label">Số điện thoại:</label>
+                                    <label htmlFor="phoneNumber" className="form-label fw-bold text-muted">Số điện thoại:</label>
                                     <input
                                         type="text"
-                                        className="form-control form-control-lg"
+                                        className="form-control form-control-lg shadow-sm"
                                         id="phoneNumber"
                                         placeholder="Số điện thoại"
                                         value={valueoder.phonerecive}
                                         onChange={(event) => handlesetinput('phonerecive', event.target.value)}
-                                        style={{ borderRadius: '8px' }}
+                                        style={{ borderRadius: '10px' }}
                                     />
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-md-6 mb-4">
-                                    <label htmlFor="address" className="form-label">Địa chỉ:</label>
+                                    <label htmlFor="address" className="form-label fw-bold text-muted">Địa chỉ:</label>
                                     <input
                                         type="text"
-                                        className="form-control form-control-lg"
+                                        className="form-control form-control-lg shadow-sm"
                                         id="address"
                                         placeholder="Địa chỉ"
                                         value={valueoder.addressrecive}
                                         onChange={(event) => handlesetinput('addressrecive', event.target.value)}
-                                        style={{ borderRadius: '8px' }}
+                                        style={{ borderRadius: '10px' }}
                                     />
                                 </div>
                                 <div className="col-md-6 mb-4">
-                                    <label htmlFor="email" className="form-label">Email:</label>
+                                    <label htmlFor="email" className="form-label fw-bold text-muted">Email:</label>
                                     <input
                                         type="email"
-                                        className="form-control form-control-lg"
+                                        className="form-control form-control-lg shadow-sm"
                                         id="email"
                                         placeholder="Email"
                                         value={valueoder.emailrecive}
                                         onChange={(event) => handlesetinput('emailrecive', event.target.value)}
-                                        style={{ borderRadius: '8px' }}
+                                        style={{ borderRadius: '10px' }}
                                     />
                                 </div>
                             </div>
                         </form>
 
-                        <h5 className="mt-4">Phương thức thanh toán</h5>
+
+                        <h5 className="mt-4 fw-bold text-muted">Phương thức thanh toán</h5>
                         <form>
                             <div className="payment-method-selector mb-4">
                                 <div className="row">
                                     {listpayment.map((paymentMethod) => (
-                                        <div key={paymentMethod.id} className="col-md-6 mb-3">
+                                        <div key={paymentMethod.id} className="col-lg-6 col-md-6 mb-3">
                                             <div
                                                 className={`card payment-card p-3 ${selectedValue === paymentMethod.id ? 'selected' : ''}`}
                                                 onClick={() => {
@@ -260,10 +261,10 @@ const Checkout = (props) => {
                                                 }}
                                                 style={{
                                                     cursor: 'pointer',
-                                                    borderRadius: '8px',
+                                                    borderRadius: '10px',
                                                     border: selectedValue === paymentMethod.id ? '2px solid #28a745' : '1px solid #ddd',
                                                     transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
-                                                    boxShadow: selectedValue === paymentMethod.id ? '0px 4px 12px rgba(0, 123, 255, 0.2)' : 'none',
+                                                    boxShadow: selectedValue === paymentMethod.id ? '0px 6px 15px rgba(0, 123, 255, 0.15)' : 'none',
                                                 }}
                                             >
                                                 <div className="d-flex align-items-center">
@@ -285,19 +286,20 @@ const Checkout = (props) => {
                                     ))}
                                 </div>
                             </div>
-                            <button type="button" className="btn btn-success btn-lg w-100" onClick={handlecheck}>
+                            <button type="button" className="btn btn-success btn-lg w-100 shadow-sm" onClick={handlecheck}>
                                 Đặt hàng
                             </button>
                         </form>
                     </div>
 
-                    <div className="col-md-5">
-                        <h5>Đơn hàng của bạn</h5>
-                        <ul className="list-group mb-4">
+
+                    <div className="col-lg-5 col-md-12">
+                        <h5 className="fw-bold text-muted mb-4">Đơn hàng của bạn</h5>
+                        <ul className="list-group mb-4 shadow-sm rounded" style={{ backgroundColor: '#f9f9f9' }}>
                             {cartItems.map((item) => (
-                                <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center">
+                                <li key={item.id} className="list-group-item d-flex justify-content-between align-items-center border-0">
                                     <div>
-                                        <h6 className="my-0">{item.name}</h6>
+                                        <h6 className="my-0 fw-bold text-dark">{item.name}</h6>
                                         <small className="text-muted">Số lượng: {item.quantity}</small>
                                     </div>
                                     <span className="text-muted">
@@ -307,8 +309,8 @@ const Checkout = (props) => {
                             ))}
                         </ul>
 
-                        <div className="card p-4" style={{ borderRadius: '10px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' }}>
-                            <h5 className="mb-0">
+                        <div className="card p-4 rounded shadow-sm" style={{ boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.1)' }}>
+                            <h5 className="mb-0 fw-bold">
                                 Tổng tiền:{' '}
                                 {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(totalAmount)}
                             </h5>
@@ -316,6 +318,7 @@ const Checkout = (props) => {
                     </div>
                 </div>
             </div>
+
 
 
             <Footer />

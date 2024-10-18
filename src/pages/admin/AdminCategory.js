@@ -95,7 +95,7 @@ const AdminCategory = (props) => {
             render: (text, record, index) => <a>{index + 1 + (currentPage - 1) * pageSize}</a>,
         },
         {
-            title: 'Name',
+            title: 'Tên danh mục',
             dataIndex: 'categoryName',
             render: (text) => <a>{text}</a>,
         },

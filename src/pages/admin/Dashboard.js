@@ -105,34 +105,34 @@ const Dashboard = (props) => {
                             {
                                 key: 'Home',
                                 icon: <HomeOutlined />,
-                                label: 'Home',
+                                label: 'Trang chủ',
                             },
                             {
                                 key: 'User',
                                 icon: <UserOutlined />,
-                                label: 'Customer',
+                                label: 'Người dùng',
                             },
                             ,
 
                             {
                                 key: 'Product',
                                 icon: <GiftOutlined />,
-                                label: 'Product',
+                                label: 'Sản phẩm',
                             },
                             {
                                 key: 'Order',
                                 icon: <ProfileOutlined />,
-                                label: 'Orders',
+                                label: 'Đơn hàng',
                             },
                             {
                                 key: 'Category',
                                 icon: <TableOutlined />,
-                                label: 'Category',
+                                label: 'Danh mục',
                             },
                             {
                                 key: 'Logout',
                                 icon: <PoweroffOutlined />,
-                                label: 'Log out',
+                                label: 'Đăng xuất',
                             },
                         ]}
                     />

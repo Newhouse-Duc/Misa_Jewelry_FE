@@ -56,19 +56,19 @@ const MdUserviewDetail = ({ orderid, orderStatus }) => {
 
     const steps = [
         {
-            title: <span style={{ fontSize: '12px' }}>Pending</span>,
+            title: <span style={{ fontSize: '12px' }}>Chờ xác nhận</span>,
             icon: <ClockCircleOutlined />,
         },
         {
-            title: <span style={{ fontSize: '12px' }}>Confirm</span>,
+            title: <span style={{ fontSize: '12px' }}>Xác nhận </span>,
             icon: <CheckCircleOutlined />,
         },
         {
-            title: <span style={{ fontSize: '12px' }}>Shipped</span>,
+            title: <span style={{ fontSize: '12px' }}>Đang giao</span>,
             icon: <CarOutlined />,
         },
         {
-            title: <span style={{ fontSize: '12px' }}>Delivered</span>,
+            title: <span style={{ fontSize: '12px' }}>Đã giao </span>,
             icon: <HomeOutlined />,
         },
     ];

@@ -17,8 +17,13 @@ instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 // Add a request interceptor
 instance.interceptors.request.use(function (config) {
     // Do something before request is sent
-    // config.headers.Authorization = `Bearer ${localStorage.getItem("jwt")}`;
+
+    const token = localStorage.getItem('jwt');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
     return config;
+
 }, function (error) {
     // Do something with request error
     return Promise.reject(error);

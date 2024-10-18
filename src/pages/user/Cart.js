@@ -48,17 +48,17 @@ const Cart = (props) => {
         <>
             <Header />
 
-            <section className="ftco-section" style={{ paddingTop: '50px' }}>
+            <section className="ftco-section" style={{ paddingTop: '50px', paddingBottom: '50px', backgroundColor: '#f9f9f9' }}>
                 <div className="container">
                     <div className="row justify-content-center">
-                        <div className="col-xl-10 ftco-animate">
-                            <form className="billing form">
-                                <h3 className="mb-4 billing-heading">Giỏ hàng</h3>
+                        <div className="col-xl-10 col-lg-12 ftco-animate">
+                            <form className="billing form bg-white p-5 shadow-sm rounded">
+                                <h3 className="mb-4 billing-heading text-dark" style={{ fontWeight: '600', fontSize: '24px', textAlign: 'center' }}>Giỏ hàng</h3>
                                 <hr />
-                                <div className="table cart" style={{ overflowX: 'auto' }}>
-                                    <table className="table table-responsive bg-body-tertiary mb-3">
-                                        <thead>
-                                            <tr className="text-center">
+                                <div className="table-responsive" style={{ overflowX: 'auto' }}>
+                                    <table className="table table-borderless text-center">
+                                        <thead className="bg-light">
+                                            <tr>
                                                 <th>&nbsp;</th>
                                                 <th><strong>Ảnh</strong></th>
                                                 <th><strong>Tên sản phẩm</strong></th>
@@ -70,36 +70,40 @@ const Cart = (props) => {
                                         <tbody>
                                             {cartItems.length === 0 ? (
                                                 <tr>
-                                                    <td colSpan="6" className="text-center">
-                                                        <p>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
-                                                        <MDBBtn outline className="btn-lg w-50 text-dark" color="success" type="button" onClick={() => navigate('/shop')}>
+                                                    <td colSpan="6" className="text-center p-5">
+                                                        <p className="mb-4" style={{ fontSize: '18px', color: '#6c757d' }}>Bạn chưa có sản phẩm nào trong giỏ hàng</p>
+                                                        <MDBBtn className="btn-lg w-50 text-light" color="success" type="button" onClick={() => navigate('/shop')}>
                                                             Mua sắm ngay
                                                         </MDBBtn>
                                                     </td>
                                                 </tr>
                                             ) : (
                                                 cartItems.map((item) => (
-                                                    <tr className="text-center align-middle" key={item.id}>
+                                                    <tr key={item.id} className="align-middle">
                                                         <td>
-                                                            <i className="bi bi-x-square-fill" onClick={() => handleremovecart(item.id)}></i>
+                                                            <i className="bi bi-x-square-fill" onClick={() => handleremovecart(item.id)} style={{ color: '#dc3545', cursor: 'pointer' }}></i>
                                                         </td>
                                                         <td>
-                                                            <img src={item.img} alt="Sản phẩm" className="img-thumbnail" style={{ width: "100px", height: "auto" }} />
+                                                            <img src={item.img} alt="Sản phẩm" className="img-thumbnail rounded" style={{ width: "80px", height: "auto" }} />
                                                         </td>
-                                                        <td>{item.name}</td>
-                                                        <td>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.price)}</td>
+                                                        <td style={{ fontWeight: '500', fontSize: '16px' }}>{item.name}</td>
+                                                        <td style={{ color: '#007bff', fontWeight: 'bold' }}>
+                                                            {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.price)}
+                                                        </td>
                                                         <td>
                                                             <div className="d-flex justify-content-center align-items-center">
-                                                                <button type="button" className="btn btn-outline-secondary" onClick={() => handleIncrease(item.id)}>
+                                                                <button type="button" className="btn btn-outline-secondary btn-sm" onClick={() => handleIncrease(item.id)}>
                                                                     <i className="bi bi-plus-circle"></i>
                                                                 </button>
-                                                                <span className="mx-2">{item.quantity}</span>
-                                                                <button type="button" className="btn btn-outline-secondary" onClick={() => handleDecrease(item.id)}>
+                                                                <span className="mx-2" style={{ fontSize: '16px' }}>{item.quantity}</span>
+                                                                <button type="button" className="btn btn-outline-secondary btn-sm" onClick={() => handleDecrease(item.id)}>
                                                                     <i className="bi bi-dash-circle"></i>
                                                                 </button>
                                                             </div>
                                                         </td>
-                                                        <td>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.totalPrice)}</td>
+                                                        <td style={{ color: '#28a745', fontWeight: 'bold' }}>
+                                                            {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.totalPrice)}
+                                                        </td>
                                                     </tr>
                                                 ))
                                             )}
@@ -110,14 +114,14 @@ const Cart = (props) => {
                             <br />
                             <div className="row justify-content-end">
                                 <div className="col-xl-5 col-lg-6 ftco-animate">
-                                    <form className="billing form">
-                                        <h4>Tổng tiền giỏ hàng</h4>
+                                    <div className="billing form bg-white p-4 shadow-sm rounded">
+                                        <h4 className="text-dark" style={{ fontWeight: '600', fontSize: '20px' }}>Tổng tiền giỏ hàng</h4>
                                         <hr />
-                                        <p>Tổng tiền: {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(totalAmount)}</p>
-                                    </form>
+                                        <p style={{ fontSize: '18px', fontWeight: '500' }}>Tổng tiền: <span style={{ color: '#28a745' }}>{new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(totalAmount)}</span></p>
+                                    </div>
                                     <br />
-                                    <MDBBtn outline className="btn-lg w-100 text-dark" color="dark" type="button" onClick={handleCheckout}>
-                                        Thanh toán
+                                    <MDBBtn className="btn-lg w-100 text-light" color="dark" type="button" onClick={handleCheckout}>
+                                        Đặt hàng
                                     </MDBBtn>
                                 </div>
                             </div>
@@ -125,6 +129,7 @@ const Cart = (props) => {
                     </div>
                 </div>
             </section>
+
 
             <Footer />
         </>

@@ -1,23 +1,50 @@
 import React from "react";
 import Carousel from 'react-bootstrap/Carousel';
-
+import banner1 from "../../src/assets/banner1.png";
+import banner2 from "../../src/assets/banner2.png";
+import banner3 from "../../src/assets/banner3.png";
 
 const Banner = () => {
     return (
-        <Carousel className="banner-carousel" interval={3000} controls={true} indicators={false}  >
-            <Carousel.Item >
-                <img src='https://pos.nvncdn.com/7be01f-86410/bn/20220805_v2nu0NyvKj6pJCL11a8kFl3g.jpg' className="d-block w-100 img-fluid" alt="First slide" />
-
+        <Carousel
+            className="banner-carousel"
+            interval={3000}
+            controls
+            indicators={false}
+            fade
+        >
+            <Carousel.Item>
+                <div style={{ width: '100%', height: '100%', backgroundColor: "#f8f9fa", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <img
+                        src={banner1}
+                        className="img-fluid"
+                        alt="First slide"
+                        style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                    />
+                </div>
             </Carousel.Item>
             <Carousel.Item>
-                <img src='https://pos.nvncdn.com/7be01f-86410/bn/20220805_o6i5HTjXcaYoJzBsmZkdNVHS.jpg' className="d-block w-100 img-fluid" alt="Second slide" />
-
+                <div style={{ width: '100%', height: '100%', backgroundColor: "#f8f9fa", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <img
+                        src={banner2}
+                        className="img-fluid"
+                        alt="Second slide"
+                        style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                    />
+                </div>
             </Carousel.Item>
-            <Carousel.Item >
-                <img src='https://pos.nvncdn.com/7be01f-86410/bn/20220805_p8MIELiM6mk3aGNtIEdxblXX.jpg' className="d-block w-100 img-fluid" alt="Third slide" />
-
+            <Carousel.Item>
+                <div style={{ width: '100%', height: '100%', backgroundColor: "#f8f9fa", display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <img
+                        src={banner3}
+                        className="img-fluid"
+                        alt="Third slide"
+                        style={{ objectFit: "cover", width: "100%", height: "100%" }}
+                    />
+                </div>
             </Carousel.Item>
         </Carousel>
+
     );
 }
 

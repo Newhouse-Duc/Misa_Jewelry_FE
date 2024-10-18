@@ -41,7 +41,7 @@ const Login = (props) => {
         }
         dispatch(userLogin({ valueLogin, password }));
         if (user) {
-            window.location.href = "/";
+            navigate("/");
         }
 
     }

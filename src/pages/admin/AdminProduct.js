@@ -49,10 +49,11 @@ const AdminProduct = () => {
         setModal1Open(true);
     };
     const filteredProducts = listproduct.filter(product => {
-        const matchesSearch = product.productName.toLowerCase().includes(searchText.toLowerCase());
+        const matchesSearch = product.productName && product.productName.toLowerCase().includes(searchText.toLowerCase());
         const matchesCategory = selectedCategory ? product.categoryid === selectedCategory : true;
         return matchesSearch && matchesCategory;
     });
+
     const columns = [
         {
             title: 'STT',

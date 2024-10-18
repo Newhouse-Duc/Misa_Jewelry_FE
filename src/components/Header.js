@@ -77,131 +77,66 @@ const Header = (props) => {
             <MDBNavbar
                 expand="xl"
                 light
-                bgColor="light"
                 sticky
+                className="shadow-sm"
                 style={{
                     height: "auto",
                     zIndex: 1000,
                     width: "100%",
-                    backgroundColor: "#ffffff",
+                    backgroundColor: "rgba(255, 255, 255, 0.8)",
                     borderBottom: "1px solid #dee2e6",
-                    padding: "10px 20px"
+                    padding: "10px 30px",
                 }}
             >
-                <MDBContainer
-                    fluid
-                    className="justify-content-between align-items-center"
-                    style={{ maxWidth: "1200px" }}
-                >
-                    <MDBNavbarBrand
-                        className="d-flex align-items-center"
-                        style={{ padding: "0", cursor: "pointer" }}
-                        onClick={() => handleNavigate("/")}
-
-                    >
-                        <img
-                            src={logo}
-                            alt="Logo"
-                            style={{ maxHeight: "50px", objectFit: "contain", marginRight: "15px" }}
-                        />
-
+                <MDBContainer fluid className="d-flex justify-content-between align-items-center" style={{ maxWidth: "1200px" }}>
+                    <MDBNavbarBrand className="d-flex align-items-center" style={{ padding: "0", cursor: "pointer" }} onClick={() => handleNavigate("/")}>
+                        <img src={logo} alt="Logo" style={{ maxHeight: "80px", objectFit: "contain", marginRight: "15px" }} />
                     </MDBNavbarBrand>
 
-
-                    <MDBNavbarToggler
-                        aria-controls='navbarSupportedContent'
-                        aria-expanded='false'
-                        aria-label='Toggle Header'
-                        onClick={() => setOpenBasic(!openBasic)}
-                    >
-                        <MDBIcon icon='bars' fas />
+                    <MDBNavbarToggler aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle Header" onClick={() => setOpenBasic(!openBasic)}>
+                        <MDBIcon icon="bars" fas />
                     </MDBNavbarToggler>
 
-
-                    <MDBCollapse
-                        navbar
-                        open={openBasic}
-                        className='justify-content-end'
-                        style={{ backgroundColor: "#ffffff" }}
-                    >
-
-                        <form className='input-group w-auto' style={{ width: "300px" }}>
+                    <MDBCollapse navbar open={openBasic} className="justify-content-end">
+                        <form className="input-group w-auto d-none d-xl-flex" style={{ width: "350px" }}>
                             <input
                                 type="text"
                                 className="form-control"
                                 placeholder="Tìm kiếm sản phẩm..."
                                 aria-label="Search"
-                                style={{ borderRadius: "0.375rem", padding: "10px" }}
+                                style={{ borderRadius: "50px", padding: "10px", boxShadow: "0px 4px 8px rgba(0,0,0,0.1)" }}
                             />
-                            <MDBBtn
-                                outline
-                                rounded
-                                className='mx-2'
-                                color='secondary'
-                                type='button'
-                                style={{ borderColor: "#6c757d", borderRadius: "0.375rem" }}
-                            >
-                                <MDBIcon fas icon='search' />
+                            <MDBBtn outline rounded className="mx-2" color="secondary" type="button" style={{ borderRadius: "50px" }}>
+                                <MDBIcon fas icon="search" />
                             </MDBBtn>
                         </form>
 
-                        <MDBNavbarNav className='mb-2 mb-lg-0'>
-
+                        <MDBNavbarNav className="mb-2 mb-lg-0">
                             <MDBNavbarItem>
-                                <MDBNavbarLink
-                                    active
-                                    aria-current='page'
-                                    onClick={() => handleNavigate("/")}
-                                    style={{
-                                        padding: "10px 15px",
-                                        fontSize: "16px",
-                                        color: "#000",
-                                        cursor: "pointer"
-                                    }}
-                                >
+                                <MDBNavbarLink onClick={() => handleNavigate("/")} style={{ padding: "10px 20px", fontSize: "16px", color: "#000", cursor: "pointer" }}>
                                     Trang chủ
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
 
                             <MDBNavbarItem>
-                                <MDBNavbarLink
-                                    onClick={() => handleNavigate("/shop")}
-                                    style={{
-                                        padding: "10px 15px",
-                                        fontSize: "16px",
-                                        color: "#000",
-                                        cursor: "pointer"
-                                    }}
-                                >
+                                <MDBNavbarLink onClick={() => handleNavigate("/shop")} style={{ padding: "10px 20px", fontSize: "16px", color: "#000", cursor: "pointer" }}>
                                     Cửa hàng
                                 </MDBNavbarLink>
                             </MDBNavbarItem>
 
-
                             <MDBNavbarItem>
                                 <MDBDropdown>
-                                    <MDBDropdownToggle
-                                        tag='a'
-                                        className='nav-link'
-                                        role='button'
-                                        style={{ padding: "10px 15px", fontSize: "16px", color: "#000" }}
-                                    >
+                                    <MDBDropdownToggle tag="a" className="nav-link" role="button" style={{ padding: "10px 20px", fontSize: "16px", color: "#000", cursor: "pointer" }}>
                                         Thông tin
                                     </MDBDropdownToggle>
                                     <MDBDropdownMenu>
                                         <MDBDropdownItem link>
-                                            <MDBNavbarLink
-                                                onClick={() => handleNavigate("/size")}
-                                                style={{ padding: "10px 15px" }}
-                                            >
+                                            <MDBNavbarLink onClick={() => handleNavigate("/size")} style={{ padding: "10px 20px" }}>
                                                 Hướng dẫn đo size
                                             </MDBNavbarLink>
                                         </MDBDropdownItem>
                                         <MDBDropdownItem link>
-                                            <MDBNavbarLink
-                                                onClick={() => handleNavigate("/preserve")}
-                                                style={{ padding: "10px 15px" }}
-                                            >
+                                            <MDBNavbarLink onClick={() => handleNavigate("/preserve")} style={{ padding: "10px 20px" }}>
                                                 Bảo hành và bảo quản
                                             </MDBNavbarLink>
                                         </MDBDropdownItem>
@@ -209,89 +144,47 @@ const Header = (props) => {
                                 </MDBDropdown>
                             </MDBNavbarItem>
 
-
                             <MDBNavbarItem>
                                 <MDBDropdown>
-                                    <MDBDropdownToggle
-                                        tag='a'
-                                        className='nav-link'
-                                        role='button'
-                                        style={{ padding: "10px 15px", fontSize: "16px", color: "#000" }}
-                                    >
+                                    <MDBDropdownToggle tag="a" className="nav-link" role="button" style={{ padding: "10px 20px", fontSize: "16px", color: "#000" }}>
                                         Liên hệ
                                     </MDBDropdownToggle>
                                     <MDBDropdownMenu>
                                         <MDBDropdownItem link>
-                                            <MDBNavbarLink
-                                                onClick={() => handleNavigate("/recruitment")}
-                                                style={{ padding: "10px 15px" }}
-                                            >
+                                            <MDBNavbarLink onClick={() => handleNavigate("/recruitment")} style={{ padding: "10px 20px" }}>
                                                 Tuyển dụng
                                             </MDBNavbarLink>
                                         </MDBDropdownItem>
                                         <MDBDropdownItem link>
-                                            <MDBNavbarLink
-                                                onClick={() => handleNavigate("/connect")}
-                                                style={{ padding: "10px 15px" }}
-                                            >
+                                            <MDBNavbarLink onClick={() => handleNavigate("/connect")} style={{ padding: "10px 20px" }}>
                                                 Hợp tác truyền thông
                                             </MDBNavbarLink>
                                         </MDBDropdownItem>
                                     </MDBDropdownMenu>
                                 </MDBDropdown>
                             </MDBNavbarItem>
-
-
                         </MDBNavbarNav>
                     </MDBCollapse>
 
-                    <MDBCollapse
-                        navbar
-                        open={openBasic}
-                        className='justify-content-end'
-                    >
-                        <MDBNavbarNav className='mb-2 mb-lg-0'>
+                    <MDBCollapse navbar open={openBasic} className="justify-content-end">
+                        <MDBNavbarNav className="mb-2 mb-lg-0">
                             <MDBNavbarItem>
                                 <MDBDropdown>
-                                    {user ? (
-                                        <MDBDropdownToggle
-                                            tag='a'
-                                            className='nav-link'
-                                            role='button'
-                                            style={{ padding: "10px 15px", fontSize: "16px", color: "#000" }}
-                                        >
-                                            <MDBIcon icon="user" fas />&nbsp;
-                                            {user.username}
-                                        </MDBDropdownToggle>
-                                    ) : (
-                                        <MDBDropdownToggle
-                                            tag='a'
-                                            className='nav-link'
-                                            role='button'
-                                            style={{ padding: "10px 15px", fontSize: "16px", color: "#000" }}
-                                        >
-                                            <MDBIcon icon="user" fas />&nbsp;
-                                            Tài khoản
-                                        </MDBDropdownToggle>
-                                    )}
+                                    <MDBDropdownToggle tag="a" className="nav-link" role="button" style={{ padding: "10px 20px", fontSize: "16px", color: "#000" }}>
+                                        <MDBIcon icon="user" fas /> {user ? user.username : "Tài khoản"}
+                                    </MDBDropdownToggle>
                                     <MDBDropdownMenu>
                                         {user ? (
                                             <>
                                                 <MDBDropdownItem link>
-                                                    <MDBNavbarLink
-                                                        onClick={() => handleNavigate("/infor")}
-                                                        style={{ padding: "10px 15px" }}
-                                                    >
+                                                    <MDBNavbarLink onClick={() => handleNavigate("/infor")} style={{ padding: "10px 20px" }}>
                                                         <b>Thông tin</b>
                                                     </MDBNavbarLink>
                                                 </MDBDropdownItem>
                                                 <MDBDropdownItem divider />
                                                 <MDBDropdownItem>
-                                                    <MDBNavbarLink
-                                                        onClick={() => handleLogout()}
-                                                        style={{ padding: "10px 15px", cursor: "pointer" }}
-                                                    >
-                                                        <MDBIcon icon="sign-out-alt" fas style={{ verticalAlign: 'middle', color: 'red' }} />
+                                                    <MDBNavbarLink onClick={() => handleLogout()} style={{ padding: "10px 20px", cursor: "pointer" }}>
+                                                        <MDBIcon icon="sign-out-alt" fas style={{ verticalAlign: "middle", color: "red" }} />
                                                         &nbsp;<b>Đăng xuất</b>
                                                     </MDBNavbarLink>
                                                 </MDBDropdownItem>
@@ -299,18 +192,12 @@ const Header = (props) => {
                                         ) : (
                                             <>
                                                 <MDBDropdownItem>
-                                                    <MDBNavbarLink
-                                                        onClick={() => handleNavigate("/login")}
-                                                        style={{ padding: "10px 15px", cursor: "pointer" }}
-                                                    >
+                                                    <MDBNavbarLink onClick={() => handleNavigate("/login")} style={{ padding: "10px 20px", cursor: "pointer" }}>
                                                         <b>Đăng nhập</b>
                                                     </MDBNavbarLink>
                                                 </MDBDropdownItem>
                                                 <MDBDropdownItem>
-                                                    <MDBNavbarLink
-                                                        onClick={() => handleNavigate("/register")}
-                                                        style={{ padding: "10px 15px", cursor: "pointer" }}
-                                                    >
+                                                    <MDBNavbarLink onClick={() => handleNavigate("/register")} style={{ padding: "10px 20px", cursor: "pointer" }}>
                                                         <b>Đăng ký</b>
                                                     </MDBNavbarLink>
                                                 </MDBDropdownItem>
@@ -321,10 +208,7 @@ const Header = (props) => {
                             </MDBNavbarItem>
 
                             <MDBNavbarItem>
-                                <MDBNavbarLink
-                                    onClick={() => handleNavigate("/cart")}
-                                    style={{ padding: "10px 15px", fontSize: "16px", color: "#000" }}
-                                >
+                                <MDBNavbarLink onClick={() => handleNavigate("/cart")} style={{ padding: "10px 20px", fontSize: "16px", color: "#000" }}>
                                     <MDBIcon icon="shopping-cart" fas />
                                     <span className="badge rounded-pill badge-notification bg-danger">
                                         {cartItems.length}
@@ -335,6 +219,7 @@ const Header = (props) => {
                     </MDBCollapse>
                 </MDBContainer>
             </MDBNavbar>
+
 
 
         </>

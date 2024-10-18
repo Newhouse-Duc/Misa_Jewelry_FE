@@ -8,7 +8,7 @@ import { fetchMethodPayment } from "../../redux/slices/authSlice";
 
 const { Option } = Select;
 const { Search } = Input;
-const { RangePicker } = DatePicker;
+
 
 const AdminOrder = () => {
 
@@ -23,7 +23,7 @@ const AdminOrder = () => {
     const [searchName, setSearchName] = useState("");
     const [selectedStatus, setSelectedStatus] = useState(null);
     const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null);
-    const [selectedDateRange, setSelectedDateRange] = useState(null);
+
 
     const statusColors = {
         pending: 'processing',
@@ -31,15 +31,15 @@ const AdminOrder = () => {
         shipped: 'geekblue',
         delivered: 'green',
         cancelled: 'error',
-        returned: 'warning',
+
     };
 
     const statusOptions = [
-        { label: 'Pending', value: 'pending' },
-        { label: 'Confirmed', value: 'confirmed' },
-        { label: 'Shipped', value: 'shipped' },
-        { label: 'Delivered', value: 'delivered' },
-        { label: 'Cancelled', value: 'cancelled' },
+        { label: 'Chờ xác nhận', value: 'pending' },
+        { label: 'Xác nhận', value: 'confirmed' },
+        { label: 'Đang giao', value: 'shipped' },
+        { label: 'Đã giao hàng', value: 'delivered' },
+        { label: 'Hủy', value: 'cancelled' },
     ];
 
     const handleTableChange = (pagination) => {
@@ -255,6 +255,15 @@ const AdminOrder = () => {
                 onChange={handleTableChange}
                 scroll={{ x: 'max-content' }}
             />
+            <Modal
+                title="Xem chi tiết đơn hàng"
+                centered
+                open={modal2Open}
+                onCancel={() => setModal2Open(false)}
+                footer={null}
+            >
+                <MdOrderdetail orderid={selectorderid} closeModaledit={() => setModal2Open(false)} />
+            </Modal>
         </>
     );
 }
