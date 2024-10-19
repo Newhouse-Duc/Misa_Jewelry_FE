@@ -133,17 +133,16 @@ const ModalAddProduct = ({ closeModal }) => {
     );
     return (
         <>
-
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-
                 <div style={{ flex: '1', marginRight: '16px' }}>
-                    <label>Chọn ảnh</label>
+                    <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Chọn ảnh</label>
                     <Upload
                         beforeUpload={() => false}
                         listType="picture-card"
                         fileList={fileList}
                         onPreview={handlePreview}
                         onChange={handleChangeUpload}
+
                     >
                         {fileList.length >= 1 ? null : uploadButton}
                     </Upload>
@@ -164,55 +163,69 @@ const ModalAddProduct = ({ closeModal }) => {
 
                 <div style={{ flex: '2', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                     <div style={{ marginBottom: '16px' }}>
-                        <label>Tên sản phẩm</label>
+                        <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Tên sản phẩm</label>
                         <input
                             type="text"
                             placeholder="Nhập tên sản phẩm"
                             value={productData.productname}
                             onChange={(event) => handleInputChange('productname', event.target.value)}
-                            style={{ width: '100%', padding: '8px' }}
+                            style={{
+                                width: '100%',
+                                padding: '12px',
+                                borderRadius: '8px',
+                                border: '1px solid #e0e0e0',
+                                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+                            }}
                         />
                     </div>
 
                     <div style={{ marginBottom: '16px' }}>
-                        <label>Giá</label>
+                        <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Giá</label>
                         <input
                             type="number"
                             placeholder="Nhập giá"
                             value={productData.valueprice}
                             onChange={(event) => handleInputChange('valueprice', event.target.value)}
-                            style={{ width: '100%', padding: '8px' }}
+                            style={{
+                                width: '100%',
+                                padding: '12px',
+                                borderRadius: '8px',
+                                border: '1px solid #e0e0e0',
+                                boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+                            }}
                         />
                     </div>
                 </div>
             </div>
 
-
             <div style={{ marginBottom: '16px' }}>
-                <label>Danh mục</label>
+                <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Danh mục</label>
                 <Select
                     showSearch
                     placeholder="Chọn danh mục"
                     options={categoryOptions}
                     value={productData.categoryid || undefined}
                     onChange={(value) => handleInputChange('categoryid', value)}
-                    style={{ width: '100%' }}
+                    style={{
+                        width: '100%',
+                        borderRadius: '8px',
+                        boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)',
+                    }}
                 />
             </div>
 
-
             <div style={{ marginBottom: '16px' }}>
-                <label>Mô tả</label>
+                <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Mô tả</label>
                 <ReactQuill
                     theme="snow"
                     value={productData.valuedescription}
                     onChange={(value) => handleInputChange('valuedescription', value)}
+                    style={{ borderRadius: '8px', boxShadow: '0 1px 2px rgba(0, 0, 0, 0.1)' }}
                 />
             </div>
 
-
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                <Button onClick={() => { resetForm(); closeModal(); }}>
+                <Button onClick={() => { resetForm(); closeModal(); }} style={{ marginRight: '8px' }}>
                     Hủy bỏ
                 </Button>
                 <Button
@@ -223,6 +236,7 @@ const ModalAddProduct = ({ closeModal }) => {
                     Thêm sản phẩm
                 </Button>
             </div>
+
         </>
     );
 

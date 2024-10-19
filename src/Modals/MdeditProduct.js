@@ -141,10 +141,10 @@ const ModalEditProduct = ({ closeModaledit, product }) => {
     return (
         <>
 
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '24px', gap: '16px' }}>
 
                 <div style={{ flex: '1', marginRight: '16px' }}>
-                    <label>Chọn ảnh</label>
+                    <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Chọn ảnh</label>
                     <Upload
                         beforeUpload={() => false}
                         listType="picture-card"
@@ -157,9 +157,7 @@ const ModalEditProduct = ({ closeModaledit, product }) => {
                     </Upload>
                     {previewImage && (
                         <Image
-                            wrapperStyle={{
-                                display: 'none',
-                            }}
+                            wrapperStyle={{ display: 'none' }}
                             preview={{
                                 visible: previewOpen,
                                 onVisibleChange: (visible) => setPreviewOpen(visible),
@@ -172,46 +170,66 @@ const ModalEditProduct = ({ closeModaledit, product }) => {
 
 
                 <div style={{ flex: '2', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+
                     <div style={{ marginBottom: '16px' }}>
-                        <label>Tên sản phẩm</label>
+                        <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Tên sản phẩm</label>
                         <input
                             type="text"
                             placeholder="Nhập tên sản phẩm"
                             value={productData.productname}
                             onChange={(event) => handleInputChange('productname', event.target.value)}
-                            style={{ width: '100%', padding: '8px' }}
+                            style={{
+                                width: '100%',
+                                padding: '10px',
+                                borderRadius: '8px',
+                                border: '1px solid #ddd',
+                                fontSize: '14px',
+                                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.05)',
+                            }}
                         />
                     </div>
 
+
                     <div style={{ marginBottom: '16px' }}>
-                        <label>Giá</label>
+                        <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Giá</label>
                         <input
                             type="number"
                             placeholder="Nhập giá"
                             value={productData.valueprice}
                             onChange={(event) => handleInputChange('valueprice', event.target.value)}
-                            style={{ width: '100%', padding: '8px' }}
+                            style={{
+                                width: '100%',
+                                padding: '10px',
+                                borderRadius: '8px',
+                                border: '1px solid #ddd',
+                                fontSize: '14px',
+                                boxShadow: '0 2px 6px rgba(0, 0, 0, 0.05)',
+                            }}
                         />
                     </div>
                 </div>
             </div>
 
 
-            <div style={{ marginBottom: '16px' }}>
-                <label>Danh mục</label>
+            <div style={{ marginBottom: '24px' }}>
+                <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Danh mục</label>
                 <Select
                     showSearch
                     placeholder="Chọn danh mục"
                     options={categoryOptions}
                     value={productData.categoryid}
                     onChange={(value) => handleInputChange('categoryid', value)}
-                    style={{ width: '100%' }}
+                    style={{
+                        width: '100%',
+                        borderRadius: '8px',
+                        boxShadow: '0 2px 6px rgba(0, 0, 0, 0.05)',
+                    }}
                 />
             </div>
 
 
-            <div style={{ marginBottom: '16px' }}>
-                <label>Mô tả</label>
+            <div style={{ marginBottom: '24px' }}>
+                <label style={{ fontWeight: 'bold', marginBottom: '8px', display: 'block' }}>Mô tả</label>
                 <ReactQuill
                     theme="snow"
                     value={productData.valuedescription}
@@ -220,16 +238,17 @@ const ModalEditProduct = ({ closeModaledit, product }) => {
             </div>
 
 
-            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '24px' }}>
                 <Button onClick={() => closeModaledit()}>Hủy bỏ</Button>
                 <Button
                     type="primary"
-                    style={{ marginLeft: '8px' }}
+                    style={{ marginLeft: '16px' }}
                     onClick={() => handlechangeproduct()}
                 >
                     Cập nhật sản phẩm
                 </Button>
             </div>
+
         </>
     );
 

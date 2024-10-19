@@ -149,7 +149,7 @@ const initialState = {
     token: null,
     token_admin: null,
     listOrderbyUser: [],
-    orderreturn: [],
+
 }
 
 export const authSlice = createSlice({
@@ -259,7 +259,7 @@ export const authSlice = createSlice({
         builder.addCase(Order.fulfilled, (state, action) => {
             state.isLoading = false;
             message.success(action.payload.EM)
-            state.orderreturn = action.payload.DT
+
             state.isError = false
 
         })

@@ -6,11 +6,11 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { useSelector } from 'react-redux';
 
-const { Paragraph, Text } = Typography;
+
 
 const ReturnPage = () => {
     const navigate = useNavigate();
-    const orderreturn = useSelector((state) => state.auth.orderreturn);
+
 
     const handleBackToShop = () => {
         navigate('/shop');
@@ -54,34 +54,7 @@ const ReturnPage = () => {
                         textAlign: 'center',
                     }}
                 >
-                    <div style={{ marginTop: '20px', fontSize: '16px' }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', overflowX: 'auto' }}>
-                            <div style={{ display: 'flex', width: '100%', borderCollapse: 'collapse' }}>
-                                <div style={{ flex: '1', padding: '8px', textAlign: 'center', fontWeight: 'bold' }}>Ảnh sản phẩm</div>
-                                <div style={{ flex: '2', padding: '8px', textAlign: 'center', fontWeight: 'bold' }}>Tên sản phẩm</div>
-                                <div style={{ flex: '1', padding: '8px', textAlign: 'center', fontWeight: 'bold' }}>Số lượng</div>
-                                <div style={{ flex: '1', padding: '8px', textAlign: 'center', fontWeight: 'bold' }}>Giá</div>
-                                <div style={{ flex: '1', padding: '8px', textAlign: 'center', fontWeight: 'bold' }}>Tổng giá</div>
-                            </div>
-                            <div style={{ border: '1px solid #ddd', width: '100%', borderRadius: '8px', overflow: 'hidden' }}>
-                                {orderreturn.map((item, index) => (
-                                    <div key={index} style={{ display: 'flex', padding: '8px', borderBottom: '1px solid #ddd' }}>
-                                        <div style={{ flex: '1', textAlign: 'center' }}>
-                                            <img src={item.product_img} alt={item.product_name} style={{ width: '80px', height: '80px', objectFit: 'cover' }} />
-                                        </div>
-                                        <div style={{ flex: '2', textAlign: 'center' }}>{item.product_name}</div>
-                                        <div style={{ flex: '1', textAlign: 'center' }}>{item.quantity}</div>
-                                        <div style={{ flex: '1', textAlign: 'center' }}>
-                                            {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.product_price)}
-                                        </div>
-                                        <div style={{ flex: '1', textAlign: 'center' }}>
-                                            {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(item.product_totalprice)}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
+
                 </Result>
             </div>
             <Footer />
